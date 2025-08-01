@@ -1,0 +1,331 @@
+#scoreboard {
+    width: 100%;
+    height: 42px;
+    background: linear-gradient(45deg, #f00, #f90, #ff0, #0f0, #00f, #90f, #f0f);
+    background-size: 400% 400%;
+    animation: gradient 100s ease infinite;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    z-index: 5;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
+  #scoreboard span.badge {
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 64px;
+    font-weight: bold;
+    margin-right: 16px;
+  }
+
+  #scoreboard span.badge.updated {
+    animation: pulse 1s;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Add a timer-overlay class */
+.timer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 11;
+  pointer-events: none;
+}
+
+/* Add a countdown-animation class */
+@keyframes countdown-animation {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Add styles for the bonus display */
+.bonus-display {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 120px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.8), -2px 2px 4px rgba(255, 153, 0, 0.8), 2px -2px 4px rgba(0, 255, 0, 0.8), -2px -2px 4px rgba(0, 0, 255, 0.8);
+  z-index: 12;
+  opacity: 0;
+}
+
+/* Add a bonus-animation class */
+@keyframes bonus-animation {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-50%, 50px);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, 50px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 100px);
+  }
+}
+
+.bonus-display.bonus-animation {
+  animation: bonus-animation 1s;
+}
+
+/* Confetti animation */
+@keyframes confetti-animation {
+  0% {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+  5% {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(100%);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(500%);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(1000%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(2000%);
+    opacity: 0;
+  }
+}
+
+/* Confetti element styles */
+.confetti {
+  position: absolute;
+  font-size: 42px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.8), -2px 2px 4px rgba(255, 153, 0, 0.8), 2px -2px 4px rgba(0, 255, 0, 0.8), -2px -2px 4px rgba(0, 0, 255, 0.8);
+  z-index: 999;
+  opacity: 0;
+  animation: confetti-animation 3s linear;
+  animation-iteration-count: 1;
+}
+
+
+/* Menu Icon */
+.menu-icon {
+  position: absolute;
+  right: 40px;
+  font-size: 36px;
+  cursor: pointer;
+  z-index: 13;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: auto;
+}
+
+#logo-banner{
+  margin: 15% auto;
+  margin-bottom: 0px;
+  padding: 20px;
+  width: 50%;
+  background: linear-gradient(90deg, #00C4CC, #7C2AE8);
+  height: 200px;
+}
+
+.modal-content {
+  background-color: lightcyan;
+  margin: 15% auto;
+  margin-top: 0px;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.modal-close {
+  position:relative;
+  float:right;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-content h3 {
+  display: inline-block;
+  margin-top: 2.5em;
+  background: -webkit-linear-gradient(0deg, #00C4CC, #7C2AE8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-logo {
+  position: absolute;
+  left: 20px;
+  width: unset;
+}
+
+.scaled-svg {
+  /* max-width: 100%;
+ max-height: 100%; */
+ object-fit: contain;
+}
+
+.modal-logo-banner-svg {
+ margin-top: -27px;
+}
+
+/* Message animation styles */
+.message-animation {
+  position: fixed;
+  left: 50%;
+  top: 25%;
+  font-size: 120px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 3px 3px 6px rgba(255, 0, 0, 0.8), -3px 3px 6px rgba(255, 153, 0, 0.8), 3px -3px 6px rgba(0, 255, 0, 0.8), -3px -3px 6px rgba(0, 0, 255, 0.8);
+  z-index: 1000;
+}
+
+/* Message animation keyframes */
+@keyframes message-animation {
+  0% {
+    transform: translateX(1200px);
+  }
+  100% {
+    transform: translateX(-1600px);
+  }
+}
+
+.email-stats {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.email-count {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+/* For the on/off toggle */
+/* For the on/off toggle */
+/* For the on/off toggle */
+
+* {
+  box-sizing: border-box;
+}
+
+.dash-toggle {
+  position: relative;
+  display: inline-block;
+  width: 148px;
+  height: 72px;
+  user-select: none;
+}
+
+.dash-toggle-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.dash-toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #d2d2d2;
+  border-radius: 100px;
+  transition: background-color 0.3s ease;
+}
+
+.dash-toggle-slider:before {
+  content: "OFF";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 40px;
+  height: 20px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 18px 8px;
+  background-color: rgb(130, 130, 130);
+  border-radius: 50%;
+  transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+
+.dash-toggle-input:checked ~ .dash-toggle-slider {
+  background-color: #cceffe;
+}
+
+.dash-toggle-input:checked ~ .dash-toggle-slider:before {
+  content: "ON";
+  left: 84px;
+  background-color: rgb(0, 196, 204);
+}
+
+/* Fix Gmail checkbox container */
+.zA>td.oZ-x3 {
+  box-sizing: content-box !important;
+}
