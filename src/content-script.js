@@ -220,7 +220,7 @@ const htmlTemplate = `
     <section>
       <h3>Your private data stays private</h3>
       <p>Here's the thing: I don't want your data. I don't need it, I'm not interested in it, I don't want to store it, and I am against the way everyone's data is always getting exploited on the interwebs. The extension you're using right now doesn't even have a home server (the last thing I want to do is manage a new server), and it doesn't save any information about any of the emails in your inbox. Anything it *does* store (like your scores and such) is stored only in your browser on your machine, and it's going to stay there unless you decide to share it with other people.</p>
-      <p>So, you can use Email Dash with confidence. Your data is yours alone. And if you ever want to double-check yourself you can check out the Github repo a href="https://www.github.com/" target="_blank">here</a>.</p>
+      <p>So, you can use Email Dash with confidence. Your data is yours alone. And if you ever want to double-check yourself you can check out the Github repo <a href="https://github.com/jchubber/email-dash" target="_blank">here</a>.</p>
     </section>
     <section>
       <h3>View FAQ/help documentation</h3>

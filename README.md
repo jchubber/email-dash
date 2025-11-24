@@ -119,7 +119,7 @@ That said, this is a personal project I built for fun (and to stay sane while ta
 ### Here’s how to contribute:
 
 1. **Got an idea or suggestion?**  
-   Please [open a GitHub issue](https://github.com/YOUR_USERNAME/email-dash/issues) describing your idea. That way, we can have a conversation about it first.
+   Please [open a GitHub issue](https://github.com/jchubber/email-dash/issues) describing your idea. That way, we can have a conversation about it first.
 
 2. **Wait for a response.**  
    I’ll reply to the issue with one of the following:
