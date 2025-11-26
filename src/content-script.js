@@ -322,17 +322,32 @@ function clickListener(event) {
     let pointsEarned = 0;
     let startingLevel = getCurrentLevel(score)
 
+    // Gmail UI Selectors (documented for maintainability)
+    // Detection method: Event delegation on document clicks
+    // Checks parentNode for role='button' and data-tooltip attributes
+    // 
+    // Archive button: [role='button'][data-tooltip='Archive']
+    // Send button: [role='button'][data-tooltip*='Send'] (excludes "Send and archive")
+    // Send and archive: [role='button'][data-tooltip*='Send and archive']
+    // Delete button: [role='button'][data-tooltip='Delete'] (not yet implemented)
+    //
+    // Last verified: 2025-01-31
+    // Test selectors: window.emailDashDev.runSmokeTest()
+    
     if (role === 'button' && tooltip) {
+      // Archive button selector
       if (tooltip === "Archive") {
         countEmails++;
         actionType = "archived";
         pointsEarned = 10;
       } else if (tooltip.includes("Send &#x202A") || tooltip.includes("Send and archive")) {
+        // Send and archive button selector
         countEmails++;
         countEmails++;
         actionType = "send-and-archived";
         pointsEarned = 35;
       } else if (tooltip.includes("Send")) {
+        // Send button selector (must come after "Send and archive" check)
         countEmails++;
         actionType = "sent";
         pointsEarned = 25;
@@ -591,6 +606,34 @@ function updateGameEnabledToggleState() {
 }
 
 
+
+// Inject dev tools into page context so they're accessible from console
+// Content scripts run in isolated world, so we need to inject into page context
+function injectDevTools() {
+  const scripts = [
+    chrome.runtime.getURL('dev-tools/dom-snapshot.js'),
+    chrome.runtime.getURL('dev-tools/smoke-test.js')
+  ];
+
+  scripts.forEach((scriptUrl, index) => {
+    const script = document.createElement('script');
+    script.src = scriptUrl;
+    script.onload = () => {
+      // Dev tools will log their own loading messages, no verification needed
+    };
+    script.onerror = () => {
+      console.error(`❌ Failed to load dev tool script: ${scriptUrl}`);
+    };
+    (document.head || document.documentElement).appendChild(script);
+  });
+}
+
+// Inject dev tools after page loads
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', injectDevTools);
+} else {
+  injectDevTools();
+}
 
 // Import Party.js for celebrations
 // retrieved from https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js as of January 17th, 2022

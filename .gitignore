@@ -1,2 +1,6 @@
 .DS_Store
 Thumbs.db
+
+# Dev tools snapshots (may contain sensitive data)
+src/dev-tools/snapshots/
+*.snapshot.json

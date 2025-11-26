@@ -10,11 +10,22 @@
   },
   "manifest_version": 3,
   "permissions": ["storage"],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "dev-tools/dom-snapshot.js",
+        "dev-tools/smoke-test.js"
+      ],
+      "matches": ["*://mail.google.com/*"]
+    }
+  ],
   "content_scripts": [
     {
       "matches": ["*://mail.google.com/*"],
       "css": ["my-styles.css"],
-      "js": ["content-script.js"]
+      "js": [
+        "content-script.js"
+      ]
     }
   ]
 }
